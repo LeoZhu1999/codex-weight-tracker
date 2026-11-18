@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>体重趋势</title>
+  <link rel="stylesheet" href="/assets/dashboard.css">
+</head>
+<body>
+  <main id="app">
+    <header class="header">
+      <div><h1 data-i18n="title">体重趋势</h1><p id="updated" class="muted"></p></div>
+      <div class="header-actions"><button id="language" class="button quiet" aria-label="Switch language">EN</button><button id="help" class="button quiet" data-i18n="help">操作说明</button></div>
+    </header>
+    <section class="metrics" aria-label="Weight summary">
+      <article><span data-i18n="latest">最新日均</span><strong id="latest">—</strong><small id="latest-note"></small></article>
+      <article><span data-i18n="bmiLabel">当前 BMI</span><strong id="bmi">—</strong><small id="bmi-note"></small></article>
+      <article><span data-i18n="change">7日均值变化</span><strong id="change">—</strong><small id="change-note"></small></article>
+    </section>
+    <nav class="toolbar" aria-label="Chart controls">
+      <div id="ranges" class="tool-group"><button data-range="7" data-i18n="range7">7日</button><button data-range="30" data-i18n="range30">30日</button><button data-range="90" data-i18n="range90">90日</button><button data-range="180" data-i18n="range180">半年</button><button data-range="365" data-i18n="range365">1年</button><button data-range="all" data-i18n="all">全部</button><span id="range-state" class="range-state"></span></div>
+      <div class="tool-group actions"><button id="auto-y" data-i18n="autoY">自动纵轴</button><button id="reset" data-i18n="reset">恢复默认</button><button id="refresh" data-i18n="refresh">刷新</button><button id="export" data-i18n="export">导出 PNG</button><button id="shutdown" class="danger" data-i18n="exit">退出服务</button></div>
+    </nav>
+    <section class="chart-panel"><div id="chart" role="img" aria-label="Weight trend chart"></div></section>
+  </main>
+  <dialog id="help-dialog"><form method="dialog"><button class="close" aria-label="Close">×</button><h2 data-i18n="helpTitle">操作说明</h2><ul id="help-list"></ul></form></dialog>
+  <script>window.__WEIGHT_TRACKER_TOKEN__ = "__DASHBOARD_TOKEN__";</script>
+  <script src="/assets/vendor/echarts.min.js"></script>
+  <script src="/assets/dashboard.js"></script>
+</body>
+</html>

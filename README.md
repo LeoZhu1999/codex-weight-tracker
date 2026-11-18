@@ -16,7 +16,9 @@ The installer registers the Git marketplace, installs `weight-tracker`, initiali
 
 ## Open the dashboard without Codex
 
-Double-click `plugins\weight-tracker\scripts\open-dashboard.cmd` in the cloned repository. It opens the local dashboard in your default browser and keeps a small command window running while the dashboard is open. Your local configuration identifies the workbook; no Codex session is needed.
+Double-click `plugins\weight-tracker\scripts\open-dashboard.vbs` in the cloned repository. It opens the local dashboard in your default browser without showing a terminal window. The local service stops automatically about two minutes after the last dashboard page closes. Your local configuration identifies the workbook; no Codex session is needed.
+
+The dashboard uses a true date-based time axis, supports range buttons, pan/zoom, crosshair inspection, line toggles, image export, and Chinese/English switching. It bundles Apache ECharts locally, so opening it does not require an internet connection.
 
 ## Privacy and safety
 

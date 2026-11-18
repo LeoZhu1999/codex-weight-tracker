@@ -51,16 +51,15 @@ def main() -> None:
 
 
 def chart_main(open_browser: bool = True) -> None:
-    url = DashboardServer.start(load_config())
+    url, owns_server = DashboardServer.start_with_ownership(load_config())
     if open_browser:
         webbrowser.open(url)
     print(f"Dashboard running at {url}. Keep this window open while viewing it.", flush=True)
-    try:
-        import time
-        while True:
-            time.sleep(3600)
-    except KeyboardInterrupt:
-        return
+    if owns_server:
+        try:
+            DashboardServer.wait_for_stop()
+        except KeyboardInterrupt:
+            return
 
 
 if __name__ == "__main__":

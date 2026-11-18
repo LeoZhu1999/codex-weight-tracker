@@ -33,4 +33,4 @@ if ($LASTEXITCODE -ne 0) { throw "Marketplace registration failed." }
 if ($LASTEXITCODE -ne 0) { throw "Plugin installation failed." }
 
 Write-Host "Codex Weight Tracker is installed. Start a new Codex task to load its Skill and MCP tools." -ForegroundColor Green
-Write-Host "To open the dashboard without Codex, double-click: $pluginRoot\scripts\open-dashboard.cmd" -ForegroundColor Cyan
+Write-Host "To open the dashboard without Codex or a terminal window, double-click: $pluginRoot\scripts\open-dashboard.vbs" -ForegroundColor Cyan
