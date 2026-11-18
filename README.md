@@ -18,7 +18,7 @@ The installer registers the Git marketplace, installs `weight-tracker`, initiali
 
 Double-click `plugins\weight-tracker\scripts\open-dashboard.vbs` in the cloned repository. It opens the local dashboard in your default browser without showing a terminal window. The local service stops automatically about two minutes after the last dashboard page closes. Your local configuration identifies the workbook; no Codex session is needed.
 
-The dashboard uses a true date-based time axis, supports range buttons, pan/zoom, crosshair inspection, line toggles, image export, and Chinese/English switching. It bundles Apache ECharts locally, so opening it does not require an internet connection.
+The dashboard uses a true date-based time axis, supports range buttons, pan/zoom, crosshair inspection, solid line-toggle buttons, image export, and Chinese/English switching. It starts with only the daily-average line visible, shows BMI range thresholds and the current position, and remembers language, selected range, zoom, and line visibility when the page closes. It bundles Apache ECharts locally, so opening it does not require an internet connection.
 
 ## Privacy and safety
 

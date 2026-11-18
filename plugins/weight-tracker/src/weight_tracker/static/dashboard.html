@@ -14,11 +14,12 @@
     </header>
     <section class="metrics" aria-label="Weight summary">
       <article><span data-i18n="latest">最新日均</span><strong id="latest">—</strong><small id="latest-note"></small></article>
-      <article><span data-i18n="bmiLabel">当前 BMI</span><strong id="bmi">—</strong><small id="bmi-note"></small></article>
+      <article class="bmi-card"><span data-i18n="bmiLabel">当前 BMI</span><strong id="bmi">—</strong><small id="bmi-note"></small><div id="bmi-scale" class="bmi-scale" aria-label="BMI range"></div><small id="bmi-position" class="bmi-position"></small></article>
       <article><span data-i18n="change">7日均值变化</span><strong id="change">—</strong><small id="change-note"></small></article>
     </section>
     <nav class="toolbar" aria-label="Chart controls">
       <div id="ranges" class="tool-group"><button data-range="7" data-i18n="range7">7日</button><button data-range="30" data-i18n="range30">30日</button><button data-range="90" data-i18n="range90">90日</button><button data-range="180" data-i18n="range180">半年</button><button data-range="365" data-i18n="range365">1年</button><button data-range="all" data-i18n="all">全部</button><span id="range-state" class="range-state"></span></div>
+      <div id="series-controls" class="tool-group series-controls"><button class="series-toggle" data-series="raw" aria-pressed="true"><i></i><span data-i18n="raw">日均体重</span></button><button class="series-toggle average" data-series="average" aria-pressed="false"><i></i><span data-i18n="average">7日滚动平均</span></button></div>
       <div class="tool-group actions"><button id="auto-y" data-i18n="autoY">自动纵轴</button><button id="reset" data-i18n="reset">恢复默认</button><button id="refresh" data-i18n="refresh">刷新</button><button id="export" data-i18n="export">导出 PNG</button><button id="shutdown" class="danger" data-i18n="exit">退出服务</button></div>
     </nav>
     <section class="chart-panel"><div id="chart" role="img" aria-label="Weight trend chart"></div></section>

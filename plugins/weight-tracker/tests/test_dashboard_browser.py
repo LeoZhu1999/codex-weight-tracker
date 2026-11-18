@@ -36,6 +36,13 @@ def test_dashboard_browser_uses_real_time_spacing_and_fits_viewport(tmp_path: Pa
             page = browser.new_page(viewport={"width": 1366, "height": 768})
             page.goto(server.url)
             page.wait_for_function("document.querySelector('#latest').textContent !== '—'")
+            assert page.locator("#bmi-scale").inner_text().split() == ["18.5", "24", "28"]
+            visibility = page.evaluate("""() => {
+                const chart = echarts.getInstanceByDom(document.querySelector('#chart'));
+                return chart.getOption().series.map(series => series.data.length);
+            }""")
+            assert visibility[0] == 3
+            assert visibility[1] == 0
             for width, height in ((1920, 1080), (1366, 768), (1024, 600), (360, 640)):
                 page.set_viewport_size({"width": width, "height": height})
                 assert page.evaluate("document.documentElement.scrollHeight <= window.innerHeight")
@@ -48,6 +55,12 @@ def test_dashboard_browser_uses_real_time_spacing_and_fits_viewport(tmp_path: Pa
             page.get_by_role("button", name="Switch language").click()
             assert page.get_by_role("button", name="30D").is_visible()
             page.get_by_role("button", name="7D").click()
+            page.get_by_role("button", name="7-day rolling average").click()
+            assert page.locator("button[data-series='average']").get_attribute("aria-pressed") == "true"
+            page.reload()
+            page.wait_for_function("document.querySelector('#latest').textContent !== '—'")
+            assert page.locator("button[data-range='7']").evaluate("element => element.classList.contains('active')")
+            assert page.locator("button[data-series='average']").get_attribute("aria-pressed") == "true"
             assert page.locator("#chart").is_visible()
             browser.close()
     finally:
