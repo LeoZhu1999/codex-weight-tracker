@@ -12,4 +12,8 @@ cd codex-weight-tracker
 
 已有旧版三列中文 Excel（`日期 / 时间 / 体重 (kg)`）时，加上 `-MigrateLegacy`。迁移会先创建带时间戳的备份。
 
+## 不通过 Codex 打开趋势图
+
+在克隆下来的仓库中双击 `plugins\weight-tracker\scripts\open-dashboard.cmd`。它会用默认浏览器打开本地仪表板，并保留一个小型命令窗口；关闭该窗口即停止仪表板。该启动器直接读取本地配置中的工作簿路径，不需要打开 Codex。
+
 数据不会上传；图表服务仅绑定本机 `127.0.0.1`。BMI 仅用于筛查提示，不构成医疗建议或诊断。

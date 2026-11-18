@@ -24,6 +24,8 @@ def _build_parser() -> argparse.ArgumentParser:
     migrate = sub.add_parser("migrate")
     migrate.add_argument("--source", required=True)
     migrate.add_argument("--timezone", default="Europe/Berlin")
+    chart = sub.add_parser("chart", help="Open the local weight dashboard without Codex")
+    chart.add_argument("--no-browser", action="store_true", help="Start the dashboard without opening a browser")
     return parser
 
 
@@ -41,14 +43,18 @@ def main() -> None:
         result["config"] = str(config_file)
         print(json.dumps(result, ensure_ascii=False))
         return
-    result = migrate_legacy(Path(args.source).expanduser().resolve(), args.timezone)
-    print(json.dumps(result, ensure_ascii=False))
+    if args.command == "migrate":
+        result = migrate_legacy(Path(args.source).expanduser().resolve(), args.timezone)
+        print(json.dumps(result, ensure_ascii=False))
+        return
+    chart_main(open_browser=not args.no_browser)
 
 
-def chart_main() -> None:
+def chart_main(open_browser: bool = True) -> None:
     url = DashboardServer.start(load_config())
-    webbrowser.open(url)
-    print(url)
+    if open_browser:
+        webbrowser.open(url)
+    print(f"Dashboard running at {url}. Keep this window open while viewing it.", flush=True)
     try:
         import time
         while True:

@@ -14,6 +14,10 @@ Use `-MigrateLegacy` when the workbook is the legacy three-column Chinese `æ—¥æœ
 
 The installer registers the Git marketplace, installs `weight-tracker`, initializes local configuration, and checks the workbook. Restart Codex or start a new task after installation.
 
+## Open the dashboard without Codex
+
+Double-click `plugins\weight-tracker\scripts\open-dashboard.cmd` in the cloned repository. It opens the local dashboard in your default browser and keeps a small command window running while the dashboard is open. Your local configuration identifies the workbook; no Codex session is needed.
+
 ## Privacy and safety
 
 - Data remains on the local computer. The MCP service uses STDIO and the dashboard binds only to `127.0.0.1`.
@@ -27,6 +31,7 @@ cd plugins\weight-tracker
 uv sync --all-extras
 uv run pytest
 uv run python -m weight_tracker.mcp_server
+uv run python -m weight_tracker.cli chart
 ```
 
 The source repository is also a Codex marketplace. For a local development install, use:
