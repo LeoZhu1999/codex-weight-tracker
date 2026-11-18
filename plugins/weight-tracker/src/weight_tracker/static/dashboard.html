@@ -8,15 +8,15 @@
 </head>
 <body>
   <main id="app">
-    <header class="header">
-      <div><h1 data-i18n="title">体重趋势</h1><p id="updated" class="muted"></p></div>
+    <header class="dashboard-summary">
+      <div class="brand"><h1 data-i18n="title">体重趋势</h1><p id="updated" class="muted"></p></div>
+      <section class="metrics" aria-label="Weight summary">
+        <article><span data-i18n="latest">最新日均</span><strong id="latest">—</strong><small id="latest-note"></small></article>
+        <article class="bmi-card"><span data-i18n="bmiLabel">当前 BMI</span><strong id="bmi">—</strong><small id="bmi-note"></small><div id="bmi-scale" class="bmi-scale" aria-label="BMI range"></div><small id="bmi-position" class="bmi-position"></small></article>
+        <article><span data-i18n="change">7日均值变化</span><strong id="change">—</strong><small id="change-note"></small></article>
+      </section>
       <div class="header-actions"><button id="language" class="button quiet" aria-label="Switch language">EN</button><button id="help" class="button quiet" data-i18n="help">操作说明</button></div>
     </header>
-    <section class="metrics" aria-label="Weight summary">
-      <article><span data-i18n="latest">最新日均</span><strong id="latest">—</strong><small id="latest-note"></small></article>
-      <article class="bmi-card"><span data-i18n="bmiLabel">当前 BMI</span><strong id="bmi">—</strong><small id="bmi-note"></small><div id="bmi-scale" class="bmi-scale" aria-label="BMI range"></div><small id="bmi-position" class="bmi-position"></small></article>
-      <article><span data-i18n="change">7日均值变化</span><strong id="change">—</strong><small id="change-note"></small></article>
-    </section>
     <nav class="toolbar" aria-label="Chart controls">
       <div id="ranges" class="tool-group"><button data-range="7" data-i18n="range7">7日</button><button data-range="30" data-i18n="range30">30日</button><button data-range="90" data-i18n="range90">90日</button><button data-range="180" data-i18n="range180">半年</button><button data-range="365" data-i18n="range365">1年</button><button data-range="all" data-i18n="all">全部</button><span id="range-state" class="range-state"></span></div>
       <div id="series-controls" class="tool-group series-controls"><button class="series-toggle" data-series="raw" aria-pressed="true"><i></i><span data-i18n="raw">日均体重</span></button><button class="series-toggle average" data-series="average" aria-pressed="false"><i></i><span data-i18n="average">7日滚动平均</span></button></div>

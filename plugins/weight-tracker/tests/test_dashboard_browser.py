@@ -36,6 +36,10 @@ def test_dashboard_browser_uses_real_time_spacing_and_fits_viewport(tmp_path: Pa
             page = browser.new_page(viewport={"width": 1366, "height": 768})
             page.goto(server.url)
             page.wait_for_function("document.querySelector('#latest').textContent !== '—'")
+            summary = page.locator(".dashboard-summary").bounding_box()
+            metrics = page.locator(".metrics").bounding_box()
+            assert summary["y"] <= metrics["y"]
+            assert metrics["y"] + metrics["height"] <= summary["y"] + summary["height"]
             assert page.locator("#bmi-scale").inner_text().split() == ["18.5", "24", "28"]
             visibility = page.evaluate("""() => {
                 const chart = echarts.getInstanceByDom(document.querySelector('#chart'));
