@@ -32,5 +32,22 @@ if ($LASTEXITCODE -ne 0) { throw "Marketplace registration failed." }
 & codex plugin add "weight-tracker@codex-weight-tracker"
 if ($LASTEXITCODE -ne 0) { throw "Plugin installation failed." }
 
+function New-DashboardShortcut {
+  $shortcutPath = Join-Path $pluginRoot "scripts\打开体重趋势图.lnk"
+  $launcherPath = Join-Path $pluginRoot "scripts\open-dashboard.vbs"
+  $iconPath = Join-Path $pluginRoot "assets\weight-trend-launcher.ico"
+  if (-not (Test-Path -LiteralPath $iconPath)) { throw "Missing dashboard icon: $iconPath" }
+  $shell = New-Object -ComObject WScript.Shell
+  $shortcut = $shell.CreateShortcut($shortcutPath)
+  $shortcut.TargetPath = "$env:SystemRoot\System32\wscript.exe"
+  $shortcut.Arguments = '"' + $launcherPath + '"'
+  $shortcut.WorkingDirectory = $pluginRoot
+  $shortcut.IconLocation = "$iconPath,0"
+  $shortcut.Description = "Open the Codex Weight Tracker dashboard"
+  $shortcut.Save()
+  return $shortcutPath
+}
+
+$shortcutPath = New-DashboardShortcut
 Write-Host "Codex Weight Tracker is installed. Start a new Codex task to load its Skill and MCP tools." -ForegroundColor Green
-Write-Host "To open the dashboard without Codex or a terminal window, double-click: $pluginRoot\scripts\open-dashboard.vbs" -ForegroundColor Cyan
+Write-Host "To open the dashboard without Codex or a terminal window, double-click: $shortcutPath" -ForegroundColor Cyan
