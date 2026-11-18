@@ -5,6 +5,7 @@ __pycache__/
 .weight-tracker-backups/
 *.lock
 *.xlsx
-!templates/weight-tracker-template.xlsx
+!plugins/weight-tracker/uv.lock
+!plugins/weight-tracker/templates/weight-tracker-template.xlsx
 *.tmp
 pending_changes.json
