@@ -26,7 +26,7 @@ The installer registers the Git marketplace, installs `weight-tracker`, initiali
 cd plugins\weight-tracker
 uv sync --all-extras
 uv run pytest
-uv run weight-tracker-mcp
+uv run python -m weight_tracker.mcp_server
 ```
 
 The source repository is also a Codex marketplace. For a local development install, use:
