@@ -1,0 +1,33 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "weight-tracker",
+  "version": "0.1.0",
+  "description": "Local-first body-weight records, BMI, and trend dashboard.",
+  "author": { "name": "LeoZhu1999" },
+  "license": "MIT",
+  "repository": "https://github.com/LeoZhu1999/codex-weight-tracker",
+  "keywords": ["weight", "bmi", "excel", "health", "tracking"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Codex Weight Tracker",
+        "shortDescription": "Track weight and BMI",
+        "longDescription": "Record body weight locally in Excel and view daily trends, seven-day averages, and BMI in a browser dashboard.",
+        "developerName": "LeoZhu1999",
+        "category": "Healthcare",
+        "capabilities": ["Interactive"],
+        "defaultPrompt": [
+          "Record my weight as 83.5 kg.",
+          "Open my weight dashboard.",
+          "Correct my latest weight record."
+        ],
+        "logo": "assets/logo.svg",
+        "logoDark": "assets/logo-dark.svg",
+        "composerIcon": "assets/logo.svg",
+        "composerIconDark": "assets/logo-dark.svg",
+        "brandColor": "#0F766E",
+        "brandColorDark": "#2DD4BF"
+      }
+    }
+  }
+}

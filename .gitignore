@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.weight-tracker-backups/
+*.lock
+*.xlsx
+!templates/weight-tracker-template.xlsx
+*.tmp
+pending_changes.json

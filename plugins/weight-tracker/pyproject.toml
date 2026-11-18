@@ -1,0 +1,30 @@
+[project]
+name = "codex-weight-tracker"
+version = "0.1.0"
+description = "Local-first Excel weight tracker for Codex"
+requires-python = ">=3.11"
+dependencies = [
+  "mcp>=1.12,<2.0",
+  "openpyxl>=3.1.5,<4.0",
+  "platformdirs>=4.3,<5.0",
+  "pydantic>=2.8,<3.0",
+  "tzdata>=2025.2"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<9.0"]
+
+[project.scripts]
+weight-tracker-mcp = "weight_tracker.mcp_server:main"
+weight-tracker = "weight_tracker.cli:main"
+weight-tracker-chart = "weight_tracker.cli:chart_main"
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/weight_tracker"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

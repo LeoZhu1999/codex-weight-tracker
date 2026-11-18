@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "weight-tracker": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "--project", "${PLUGIN_ROOT}", "--frozen", "python", "-m", "weight_tracker.mcp_server"],
+      "cwd": "${PLUGIN_ROOT}"
+    }
+  }
+}

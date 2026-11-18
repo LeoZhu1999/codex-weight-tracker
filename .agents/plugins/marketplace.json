@@ -1,0 +1,12 @@
+{
+  "name": "codex-weight-tracker",
+  "interface": { "displayName": "Codex Weight Tracker" },
+  "plugins": [
+    {
+      "name": "weight-tracker",
+      "source": { "source": "local", "path": "./plugins/weight-tracker" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_USE" },
+      "category": "Healthcare"
+    }
+  ]
+}
