@@ -16,7 +16,7 @@ The installer registers the Git marketplace, installs `weight-tracker`, initiali
 
 ## Open the dashboard without Codex
 
-After running the installer, double-click `plugins\weight-tracker\scripts\打开体重趋势图.lnk`. It uses the bundled scale-and-trend icon and opens the local dashboard in your default browser without showing a terminal window. The local service stops automatically about two minutes after the last dashboard page closes. Your local configuration identifies the workbook; no Codex session is needed. `open-dashboard.vbs` remains the portable fallback launcher.
+After running the installer, double-click `plugins\weight-tracker\scripts\打开体重趋势图.lnk`. It uses the bundled scale-and-trend icon and opens the local dashboard in your default browser without showing a terminal window. If you close the tab and immediately use the shortcut again, it reopens the still-running service in a new tab instead of waiting for it to expire. The local service stops automatically about two minutes after the last dashboard page closes. Your local configuration identifies the workbook; no Codex session is needed. `open-dashboard.vbs` remains the portable fallback launcher.
 
 The dashboard uses a true date-based time axis, supports range buttons, pan/zoom, crosshair inspection, solid line-toggle buttons, image export, and Chinese/English switching. Its title and summary cards share a compact information strip to leave more room for the chart. It starts with only the daily-average line visible, shows BMI range thresholds and the current position, and remembers language, selected range, zoom, and line visibility when the page closes. It bundles Apache ECharts locally, so opening it does not require an internet connection.
 

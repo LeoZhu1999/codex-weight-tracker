@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "weight-tracker",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Local-first body-weight records, BMI, and trend dashboard.",
   "author": { "name": "LeoZhu1999" },
   "license": "MIT",

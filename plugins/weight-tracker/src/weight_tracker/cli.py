@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import webbrowser
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 
 from .config import AppConfig, load_config, save_config
@@ -26,6 +27,7 @@ def _build_parser() -> argparse.ArgumentParser:
     migrate.add_argument("--timezone", default="Europe/Berlin")
     chart = sub.add_parser("chart", help="Open the local weight dashboard without Codex")
     chart.add_argument("--no-browser", action="store_true", help="Start the dashboard without opening a browser")
+    chart.add_argument("--log-file", help="Append launcher output and errors to this file")
     return parser
 
 
@@ -47,13 +49,19 @@ def main() -> None:
         result = migrate_legacy(Path(args.source).expanduser().resolve(), args.timezone)
         print(json.dumps(result, ensure_ascii=False))
         return
-    chart_main(open_browser=not args.no_browser)
+    if args.log_file:
+        log_path = Path(args.log_file).expanduser()
+        log_path.parent.mkdir(parents=True, exist_ok=True)
+        with log_path.open("a", encoding="utf-8") as log, redirect_stdout(log), redirect_stderr(log):
+            chart_main(open_browser=not args.no_browser)
+    else:
+        chart_main(open_browser=not args.no_browser)
 
 
 def chart_main(open_browser: bool = True) -> None:
     url, owns_server = DashboardServer.start_with_ownership(load_config())
     if open_browser:
-        webbrowser.open(url)
+        webbrowser.open_new_tab(url)
     print(f"Dashboard running at {url}. Keep this window open while viewing it.", flush=True)
     if owns_server:
         try:
